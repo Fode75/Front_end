@@ -1,0 +1,213 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 1.5rem 0 2rem;
+  background-size: cover;
+  background-position: center top;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(13,13,20,0.95) 40%, rgba(13,13,20,0.3) 100%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  padding: 3rem;
+  max-width: 600px;
+}
+
+.heroEyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.heroTitleJP {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.heroSynopsis {
+  font-size: 0.92rem;
+  color: rgba(240,240,245,0.75);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.heroCta {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.75rem 1.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.heroCta:hover { background: #c42d5c; transform: translateY(-2px); }
+
+.heroSecondary {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.heroSecondary:hover { color: var(--color-text); }
+
+/* Stats */
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  margin-bottom: 3rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.statNum {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+}
+
+.statLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.statDivider {
+  width: 1px;
+  height: 36px;
+  background: var(--color-border);
+}
+
+/* Section */
+.section { margin-bottom: 3rem; }
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.sectionHeader .sectionTitle { margin-bottom: 0; }
+
+.seeAll {
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  transition: opacity var(--transition);
+}
+
+.seeAll:hover { opacity: 0.7; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Genre */
+.genreGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.genreCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 1.5rem 1rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.genreCard:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 20px var(--color-accent-glow);
+  transform: translateY(-3px);
+}
+
+.genreIcon { font-size: 1.8rem; }
+
+.genreName {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+}
+
+.genreCount {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .hero { min-height: 380px; }
+  .heroContent { padding: 2rem; }
+  .genreGrid { grid-template-columns: repeat(2, 1fr); }
+  .stats { gap: 1.2rem; flex-wrap: wrap; }
+}

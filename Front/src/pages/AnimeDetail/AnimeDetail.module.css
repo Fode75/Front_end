@@ -1,0 +1,217 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+  overflow: hidden;
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,13,20,1) 0%, rgba(13,13,20,0.5) 50%, rgba(13,13,20,0.2) 100%);
+}
+
+.bannerContent {
+  position: relative;
+  z-index: 1;
+  padding: 0 2rem 2rem;
+  width: 100%;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: rgba(240,240,245,0.5);
+  margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+  color: rgba(240,240,245,0.5);
+  transition: color var(--transition);
+}
+
+.breadcrumb a:hover { color: var(--color-accent); }
+.breadcrumb span:last-child { color: var(--color-text-muted); }
+
+.bannerMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.statusBadge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.statusDone { background: rgba(124,92,252,0.85); color: #fff; }
+.statusOngoing { background: rgba(230,63,110,0.85); color: #fff; }
+.statusPaused { background: rgba(122,122,154,0.7); color: #fff; }
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.titleJP {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* Layout */
+.content {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2.5rem;
+  padding: 2rem 2rem 0;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.scoreBox {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 1.2rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  justify-content: center;
+}
+
+.scoreStar { color: #f5c518; font-size: 1.5rem; }
+
+.scoreVal {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+}
+
+.scoreLabel {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.favBtn {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all var(--transition);
+  letter-spacing: 0.03em;
+}
+
+.favBtn:hover { background: var(--color-accent-glow); }
+
+.favActive {
+  background: var(--color-accent) !important;
+  color: #fff !important;
+}
+
+.infoTable {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.85rem;
+}
+
+.infoRow:last-child { border-bottom: none; }
+
+.infoKey { color: var(--color-text-muted); font-weight: 600; }
+.infoVal { color: var(--color-text); text-align: right; }
+
+/* Main */
+.main { display: flex; flex-direction: column; gap: 2.5rem; }
+
+.section {}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.synopsis {
+  font-size: 0.95rem;
+  color: rgba(240,240,245,0.8);
+  line-height: 1.8;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* Back */
+.back {
+  padding: 2rem 2rem 0;
+  border-top: 1px solid var(--color-border);
+  margin: 2rem 2rem 0;
+}
+
+.backLink {
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  transition: opacity var(--transition);
+}
+
+.backLink:hover { opacity: 0.7; }
+
+@media (max-width: 768px) {
+  .banner { height: 300px; }
+  .content { grid-template-columns: 1fr; }
+  .sidebar { flex-direction: row; flex-wrap: wrap; }
+  .scoreBox { flex: 1; }
+  .favBtn { flex: 1; }
+  .infoTable { width: 100%; }
+}
