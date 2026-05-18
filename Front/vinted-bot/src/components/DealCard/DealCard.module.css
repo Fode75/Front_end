@@ -1,0 +1,192 @@
+/* src/components/DealCard/DealCard.module.css */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(232, 48, 106, 0.12);
+  border-color: rgba(232, 48, 106, 0.35);
+}
+
+/* Image */
+.imageWrapper {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .image { transform: scale(1.06); }
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,13,13,0.8) 0%, transparent 55%);
+}
+
+/* Bouton sauvegarder (étoile) */
+.saveBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(13,13,13,0.75);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: all var(--transition);
+}
+
+.saveBtn:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+.saveActive { background: var(--color-accent) !important; color: #fff !important; border-color: var(--color-accent) !important; }
+
+/* Badge réduction */
+.discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(232, 48, 106, 0.85);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Score */
+.score {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.scoreHot { background: rgba(232,48,106,.85); color: #fff; }
+.scoreGood { background: rgba(46,204,113,.8); color: #fff; }
+.scoreOk { background: rgba(136,136,136,.7); color: #fff; }
+
+/* Corps de la carte */
+.body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+}
+
+.brand {
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+/* Prix */
+.prices {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+.currentPrice {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+}
+
+.originalPrice {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.saving {
+  font-size: 0.78rem;
+  color: var(--color-green);
+  font-weight: 600;
+}
+
+/* Meta */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+}
+
+.dot { color: var(--color-accent); }
+
+/* Boutons */
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 0.5rem;
+}
+
+.btnVinted {
+  flex: 1;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 7px 10px;
+  border-radius: 6px;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.btnVinted:hover { border-color: var(--color-border-hover); background: var(--color-border); }
+
+.btnAI {
+  flex: 1;
+  background: var(--color-accent-glow);
+  border: 1px solid rgba(232,48,106,0.3);
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 7px 10px;
+  border-radius: 6px;
+  transition: all var(--transition);
+}
+
+.btnAI:hover { background: rgba(232,48,106,0.25); }

@@ -1,0 +1,54 @@
+/* src/index.css */
+/* Variables globales : on définit les couleurs et polices une seule fois ici */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap');
+
+:root {
+  --color-bg: #0d0d0d;
+  --color-bg-card: #161616;
+  --color-bg-surface: #1e1e1e;
+  --color-text: #f0f0f0;
+  --color-text-muted: #888;
+  --color-accent: #e8306a;
+  --color-accent-glow: rgba(232, 48, 106, 0.2);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(255, 255, 255, 0.14);
+  --color-green: #2ecc71;
+  --color-amber: #f59e0b;
+  --font-display: 'Bebas Neue', Impact, sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  --radius: 10px;
+  --transition: 0.2s ease;
+}
+
+/* Reset : remet à zéro les styles par défaut du navigateur */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: var(--font-body); }
+img { max-width: 100%; display: block; }
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 3px; }
