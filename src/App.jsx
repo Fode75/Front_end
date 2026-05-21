@@ -9,10 +9,10 @@ import Deals from './pages/Deals/Deals'
 import Filters from './pages/Filters/Filters'
 import Settings from './pages/Settings/Settings'
 
-import NotFound from './pages/NotFound/NotFound'
-
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
+
+import NotFound from './pages/NotFound/NotFound'
 
 import { BotProvider } from './context/BotContext'
 import { AuthProvider, useAuth } from './context/AuthContext'
@@ -20,7 +20,6 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import styles from './App.module.css'
 
 
-// Seulement pour les vraies pages privées
 function PrivateRoute({ children }) {
   const { isLoggedIn } = useAuth()
 
@@ -30,7 +29,6 @@ function PrivateRoute({ children }) {
 }
 
 
-// Empêche d'aller sur login/register si déjà connecté
 function PublicRoute({ children }) {
   const { isLoggedIn } = useAuth()
 
@@ -44,26 +42,33 @@ function AppContent() {
   return (
     <div className={styles.app}>
 
-      {/* Navbar TOUJOURS visible */}
+      {/* Navbar toujours visible */}
       <Navbar />
 
       <main className={styles.main}>
         <Routes>
 
-          {/* Pages publiques */}
-          <Route path="/" element={<Dashboard />} />
+          {/* PUBLIC */}
+          <Route
+            path="/"
+            element={<Dashboard />}
+          />
 
           <Route
             path="/bons-plans"
             element={<Deals />}
           />
 
+          {/* PRIVÉ */}
           <Route
             path="/recherches"
-            element={<Filters />}
+            element={
+              <PrivateRoute>
+                <Filters />
+              </PrivateRoute>
+            }
           />
 
-          {/* Paramètres reste privé */}
           <Route
             path="/parametres"
             element={
@@ -73,7 +78,7 @@ function AppContent() {
             }
           />
 
-          {/* Auth */}
+          {/* AUTH */}
           <Route
             path="/login"
             element={
