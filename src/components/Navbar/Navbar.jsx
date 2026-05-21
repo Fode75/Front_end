@@ -1,13 +1,20 @@
 // src/components/Navbar/Navbar.jsx
-// La barre de navigation en haut de toutes les pages.
-// Très similaire à ton Navbar Animeka, juste les liens changent.
+// Version mise à jour avec le bouton de déconnexion.
 
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useBot } from '../../context/BotContext'
+import { useAuth } from '../../context/AuthContext'
 import styles from './Navbar.module.css'
 
 function Navbar() {
   const { savedDeals, botActive } = useBot()
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    logout()
+    navigate('/login')
+  }
 
   return (
     <header className={styles.header}>
@@ -35,7 +42,6 @@ function Navbar() {
               className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}
             >
               Bons plans
-              {/* Badge rouge avec le nombre de deals sauvegardés */}
               {savedDeals.length > 0 && (
                 <span className={styles.badge}>{savedDeals.length}</span>
               )}
@@ -59,10 +65,22 @@ function Navbar() {
           </li>
         </ul>
 
-        {/* Indicateur de statut du bot */}
-        <div className={`${styles.status} ${botActive ? styles.statusActive : styles.statusOff}`}>
-          <span className={styles.statusDot} />
-          {botActive ? 'Bot actif' : 'Bot arrêté'}
+        {/* Droite : statut bot + user + déconnexion */}
+        <div className={styles.right}>
+          <div className={`${styles.status} ${botActive ? styles.statusActive : styles.statusOff}`}>
+            <span className={styles.statusDot} />
+            {botActive ? 'Bot actif' : 'Bot arrêté'}
+          </div>
+
+          {/* Email de l'utilisateur connecté */}
+          {user && (
+            <span className={styles.userEmail}>{user.email}</span>
+          )}
+
+          {/* Bouton déconnexion */}
+          <button className={styles.logoutBtn} onClick={handleLogout}>
+            Déconnexion
+          </button>
         </div>
       </nav>
     </header>
