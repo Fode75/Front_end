@@ -1,16 +1,13 @@
-/* src/pages/NotFound/NotFound.module.css */
-
 .page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
+  min-height: 80vh;
   gap: 1rem;
   text-align: center;
   padding: 2rem;
 }
-
 .code {
   font-family: var(--font-display);
   font-size: 8rem;
@@ -18,16 +15,13 @@
   line-height: 1;
   letter-spacing: 0.1em;
 }
-
 .title {
   font-family: var(--font-display);
   font-size: 2rem;
   letter-spacing: 0.06em;
   color: var(--color-text);
 }
-
 .text { font-size: 0.9rem; color: var(--color-text-muted); }
-
 .btn {
   margin-top: 0.5rem;
   background: var(--color-accent);
@@ -36,7 +30,7 @@
   border-radius: 999px;
   font-size: 0.9rem;
   font-weight: 600;
-  transition: opacity var(--transition);
+  transition: opacity 0.2s;
+  text-decoration: none;
 }
-
 .btn:hover { opacity: 0.85; }

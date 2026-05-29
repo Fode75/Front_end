@@ -1,23 +1,19 @@
 // src/context/AuthContext.jsx
-// Gère l'état de connexion dans toute l'app.
-// Même principe que BotContext — une "boîte" accessible partout.
-
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState } from 'react'
 
 const AuthContext = createContext()
 
+const API_URL = import.meta.env.VITE_API_URL || ''
+
 export function AuthProvider({ children }) {
-  // On récupère le token stocké dans le navigateur au démarrage
   const [token, setToken] = useState(() => localStorage.getItem('vintedbot-token'))
   const [user, setUser] = useState(() => {
     const u = localStorage.getItem('vintedbot-user')
     return u ? JSON.parse(u) : null
   })
 
-  // Est-ce que l'utilisateur est connecté ?
   const isLoggedIn = !!token
 
-  // Connexion : on sauvegarde le token et l'utilisateur
   function login(token, user) {
     setToken(token)
     setUser(user)
@@ -25,7 +21,6 @@ export function AuthProvider({ children }) {
     localStorage.setItem('vintedbot-user', JSON.stringify(user))
   }
 
-  // Déconnexion : on efface tout
   function logout() {
     setToken(null)
     setUser(null)
@@ -34,13 +29,12 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ token, user, isLoggedIn, login, logout }}>
+    <AuthContext.Provider value={{ token, user, isLoggedIn, login, logout, API_URL }}>
       {children}
     </AuthContext.Provider>
   )
 }
 
-// Hook custom : permet d'utiliser le contexte avec "const { isLoggedIn } = useAuth()"
 export function useAuth() {
   return useContext(AuthContext)
 }

@@ -1,16 +1,12 @@
 // src/pages/Register/Register.jsx
-// Page d'inscription. Crée un compte via ton API backend.
-
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import styles from './Register.module.css'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
-
 function Register() {
   const navigate = useNavigate()
-  const { login } = useAuth()
+  const { login, API_URL } = useAuth()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -22,7 +18,6 @@ function Register() {
     e.preventDefault()
     setError('')
 
-    // Vérification côté client : les deux mots de passe correspondent ?
     if (password !== confirm) {
       setError('Les mots de passe ne correspondent pas')
       return
@@ -49,7 +44,6 @@ function Register() {
         return
       }
 
-      // Compte créé → connexion automatique et redirection
       login(data.token, data.user)
       navigate('/')
 
@@ -63,7 +57,6 @@ function Register() {
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-
         <div className={styles.logo}>
           <span className={styles.logoAccent}>⚡</span>
           VINTED<span className={styles.logoLight}>BOT</span>
@@ -120,7 +113,6 @@ function Register() {
           Déjà un compte ?{' '}
           <Link to="/login" className={styles.link}>Se connecter</Link>
         </p>
-
       </div>
     </div>
   )
