@@ -3,8 +3,7 @@ import { createContext, useContext, useState } from 'react'
 
 const AuthContext = createContext()
 
-// Vide = les appels passent par le proxy Nginx sur le même domaine
-const API_URL = ''
+const API_URL = import.meta.env.VITE_API_URL || ''
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(() => localStorage.getItem('vintedbot-token'))
