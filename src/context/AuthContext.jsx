@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react'
 
 const AuthContext = createContext()
 
-const API_URL = import.meta.env.VITE_API_URL || ''
+const API_URL = ''
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(() => localStorage.getItem('vintedbot-token'))
